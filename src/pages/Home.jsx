@@ -69,7 +69,7 @@ const Index = () => {
           title="Gaia’s Bolsas"
           subtitle="Sustentabilidade que você carrega com você. Bolsas elegantes feitas de materiais reciclados."
           buttons={[
-            { label: "Ver Produtos", href: "/produtos" },
+            { label: "Ver Produtos", href: "/produto" },
             { label: "Oficinas", href: "/oficina", variant: "outline" },
           ]}
           bgClassName="bg-gradient-to-b from-emerald-200/30 via-emerald-100/20 to-white"
