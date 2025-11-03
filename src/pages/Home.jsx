@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -79,7 +80,7 @@ const Index = () => {
         <section className="relative -mt-10 z-10">
           <div className="absolute inset-0 bg-linear-to-b from-white via-emerald-200 to-emerald-300"></div>
 
-          <div className="relative w-[90%] mx-auto px-4 md:px-8 py-20 bg-white rounded-3xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.25)]">
+          <div className="relative w-[90%] mx-auto px-4 md:px-8 py-20 rounded-3xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.25)] bg-linear-to-b from-white via-emerald-50 to-white">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-emerald-900">
                 Nossas Coleções
@@ -90,7 +91,7 @@ const Index = () => {
               </p>
             </div>
 
-            {/* GRID no desktop / CARROSSEL no mobile */}
+            {/* GRID no desktop */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {collections.map((collection) => (
                 <ProductCard
@@ -107,7 +108,7 @@ const Index = () => {
               {collections.map((collection) => (
                 <div
                   key={collection.title}
-                  className="snap-center shrink-0 w-[85%] bg-white rounded-2xl shadow-md border border-emerald-200 overflow-hidden flex flex-col items-center"
+                  className="snap-center shrink-0 w-[85%] rounded-2xl shadow-md border border-black overflow-hidden flex flex-col items-center bg-emerald-50"
                 >
                   <div className="w-full h-48 overflow-hidden">
                     <img
@@ -124,12 +125,17 @@ const Index = () => {
                       {collection.description ||
                         "Conheça os detalhes dessa coleção exclusiva."}
                     </p>
+                    <Link
+                      to="/produto"
+                      className="mt-2 inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-xl"
+                    >
+                      Ver Produtos
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Indicador de rolagem */}
             <p className="md:hidden text-center text-emerald-600 mt-3 text-sm">
               ⇢ Arraste para o lado ⇠
             </p>
@@ -137,7 +143,7 @@ const Index = () => {
         </section>
 
         {/* About Section */}
-        <section className="py-16 bg-emerald-300 ">
+        <section className="py-16 bg-emerald-300">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-emerald-900">
@@ -217,7 +223,7 @@ const Index = () => {
               asChild
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl"
             >
-              <a href="/oficinas">Ver Oficinas</a>
+              <Link to="/oficinas">Ver Oficinas</Link>
             </Button>
           </div>
         </section>
