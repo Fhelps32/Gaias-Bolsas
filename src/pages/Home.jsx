@@ -68,12 +68,13 @@ const Index = () => {
       <main className="flex-1">
         <Hero
           title="Gaia’s Bolsas"
-          subtitle="Sustentabilidade que você carrega com você. Bolsas elegantes feitas de materiais reciclados."
+          subtitle="Sustentabilidade que você carrega com você."
           buttons={[
             { label: "Ver Produtos", href: "/produto" },
             { label: "Oficinas", href: "/oficinas", variant: "outline" },
           ]}
           bgClassName="bg-gradient-to-b from-emerald-200/30 via-emerald-100/20 to-white"
+          image="/images/logo-padrao.png"
         />
 
         {/* Collections Section */}

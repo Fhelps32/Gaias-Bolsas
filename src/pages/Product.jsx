@@ -77,32 +77,35 @@ const Product = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 text-emerald-900">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-8">
+
+      <main className="flex-1 container mx-auto px-4 py-20">
+        <div className="grid md:grid-cols-2 gap-12 py-10 items-center">
           {/* Imagem do produto */}
-          <div>
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-auto object-cover rounded-xl shadow"
-            />
+          <div className="flex justify-center">
+            <div className="w-full max-w-md aspect-4/5 rounded-xl overflow-hidden shadow-lg bg-white">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           {/* Detalhes */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between h-full">
             <div>
               <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-              <p className="text-xl text-emerald-700 mb-6">
+              <p className="text-xl text-emerald-700 mb-4">
                 R$ {product.price.toFixed(2)}
               </p>
-              <p className="text-md text-emerald-800 mb-8">
+              <p className="text-md text-emerald-800 mb-6">
                 {product.description}
               </p>
 
               {/* Detalhes extras */}
-              <div className="mb-6">
+              <div className="mb-8">
                 <h2 className="font-semibold mb-2">Detalhes:</h2>
-                <ul className="list-disc list-inside text-emerald-800">
+                <ul className="list-disc list-inside text-emerald-800 space-y-1">
                   {product.details.map((d, idx) => (
                     <li key={idx}>{d}</li>
                   ))}
@@ -110,12 +113,14 @@ const Product = () => {
               </div>
             </div>
 
-            <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl">
+            {/* Botão fixo abaixo do conteúdo */}
+            <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl text-lg">
               Adicionar ao Carrinho
             </Button>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );

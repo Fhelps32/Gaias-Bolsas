@@ -6,12 +6,14 @@ import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Oficinas from "./pages/Oficinas";
 import OficinaDetalhe from "./pages/OficinasDetalhe";
+import ScrollToTop from "./components/scrollToTop";
 
 import "./index.css";
 
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produto" element={<Shop />} />

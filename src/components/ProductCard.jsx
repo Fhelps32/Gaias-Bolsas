@@ -1,8 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // === COMPONENTES BASE DE CARD ===
-// Aqui criamos versões simples dos componentes do shadcn/ui (sem TypeScript e sem cn()).
-
 const Card = React.forwardRef(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
@@ -44,7 +43,7 @@ const CardContent = React.forwardRef(({ className = "", ...props }, ref) => (
 const CardFooter = React.forwardRef(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={"flex items-center p-6 pt-0 " + className}
+    className={"flex items-center justify-center p-6 pt-0 " + className}
     {...props}
   />
 ));
@@ -70,10 +69,21 @@ const ProductCard = ({ title, description, image }) => {
           image
         )}
       </div>
+
       <CardHeader>
         <CardTitle className="text-xl">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription>
+          {description}
+          <Link
+            to="/produto"
+            className="mt-2 inline-block px-5 py-2 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+          >
+            Ver mais
+          </Link>
+        </CardDescription>
       </CardHeader>
+
+      <CardFooter></CardFooter>
     </Card>
   );
 };
