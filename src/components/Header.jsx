@@ -3,84 +3,96 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const navLinks = [
-    { href: "/", label: "Início" },
-    { href: "/produto", label: "Catálogo" },
-    { href: "/oficina", label: "Oficina de Reciclagem" },
-    { href: "/contato", label: "Contato" },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/90 backdrop-blur">
-      <div className="w-full flex h-16 items-center justify-between px-6 md:px-15">
+    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-green-700">
-            Gaia’s Bolsas
-          </span>
+        <Link to="/" className="text-2xl font-bold text-emerald-700">
+          Gaia’s Bolsas
         </Link>
 
-        {/* Navegação Desktop */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-green-600 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Botão do menu mobile */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-emerald-700 focus:outline-none z-50"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
+        {/* Links desktop */}
+        <nav className="hidden md:flex space-x-8 text-emerald-800 font-medium">
+          <Link
+            to="/"
+            className="hover:text-emerald-600 transition-colors duration-200"
+          >
+            Início
+          </Link>
+          <Link
+            to="/produto"
+            className="hover:text-emerald-600 transition-colors duration-200"
+          >
+            Produtos
+          </Link>
+          <Link
+            to="/oficinas"
+            className="hover:text-emerald-600 transition-colors duration-200"
+          >
+            Oficinas
+          </Link>
+          <Link
+            to="/contato"
+            className="hover:text-emerald-600 transition-colors duration-200"
+          >
+            Contato
+          </Link>
         </nav>
 
-        {/* Botão da Sidebar (Mobile) */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsSidebarOpen(true)}
-            className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+        {/* Menu Mobile lateral */}
+        <div
+          className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+            menuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMenuOpen(false)}
+        />
+
+        <nav
+          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 z-40 flex flex-col pt-24 px-6 space-y-6 ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <Link
+            to="/"
+            className="text-lg text-emerald-800 font-semibold hover:text-emerald-600"
+            onClick={() => setMenuOpen(false)}
           >
-            <Menu className="h-6 w-6 text-gray-800" />
-          </button>
-        </div>
-
-        {/* Sidebar */}
-        {isSidebarOpen && (
-          <div className="fixed inset-0 z-50 flex">
-            {/* Overlay */}
-            <div
-              className="fixed inset-0 bg-black/40"
-              onClick={() => setIsSidebarOpen(false)}
-            ></div>
-
-            {/* Menu lateral */}
-            <div className="relative ml-auto w-64 bg-white shadow-lg flex flex-col">
-              <div className="flex items-center justify-between p-4 border-b">
-                <span className="text-lg font-bold text-green-700">Menu</span>
-                <button
-                  onClick={() => setIsSidebarOpen(false)}
-                  className="p-2 rounded-md hover:bg-gray-100 transition-colors"
-                >
-                  <X className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
-
-              <nav className="flex flex-col p-4 space-y-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setIsSidebarOpen(false)}
-                    className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-          </div>
-        )}
+            Início
+          </Link>
+          <Link
+            to="/produto"
+            className="text-lg text-emerald-800 font-semibold hover:text-emerald-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            Produtos
+          </Link>
+          <Link
+            to="/oficinas"
+            className="text-lg text-emerald-800 font-semibold hover:text-emerald-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            Oficinas
+          </Link>
+          <Link
+            to="/contato"
+            className="text-lg text-emerald-800 font-semibold hover:text-emerald-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contato
+          </Link>
+        </nav>
       </div>
     </header>
   );

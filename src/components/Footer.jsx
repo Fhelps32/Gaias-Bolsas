@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <MapPin className="h-4 w-4 text-green-700" />
-                <span>Rio de Janeiro, RJ</span>
+                <span>Avenida Amaral Peixoto, Volta Redonda 27253220</span>
               </div>
             </div>
           </div>

@@ -70,7 +70,7 @@ const Index = () => {
           subtitle="Sustentabilidade que você carrega com você. Bolsas elegantes feitas de materiais reciclados."
           buttons={[
             { label: "Ver Produtos", href: "/produto" },
-            { label: "Oficinas", href: "/oficina", variant: "outline" },
+            { label: "Oficinas", href: "/oficinas", variant: "outline" },
           ]}
           bgClassName="bg-gradient-to-b from-emerald-200/30 via-emerald-100/20 to-white"
         />
@@ -90,7 +90,8 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* GRID no desktop / CARROSSEL no mobile */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {collections.map((collection) => (
                 <ProductCard
                   key={collection.title}
@@ -100,6 +101,38 @@ const Index = () => {
                 />
               ))}
             </div>
+
+            {/* Carrossel Mobile */}
+            <div className="md:hidden flex overflow-x-auto gap-4 snap-x snap-mandatory pb-4">
+              {collections.map((collection) => (
+                <div
+                  key={collection.title}
+                  className="snap-center shrink-0 w-[85%] bg-white rounded-2xl shadow-md border border-emerald-200 overflow-hidden flex flex-col items-center"
+                >
+                  <div className="w-full h-48 overflow-hidden">
+                    <img
+                      src={collection.image.props.src}
+                      alt={collection.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="text-lg font-semibold text-emerald-900">
+                      {collection.title}
+                    </h3>
+                    <p className="text-sm text-emerald-700 mt-1">
+                      {collection.description ||
+                        "Conheça os detalhes dessa coleção exclusiva."}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Indicador de rolagem */}
+            <p className="md:hidden text-center text-emerald-600 mt-3 text-sm">
+              ⇢ Arraste para o lado ⇠
+            </p>
           </div>
         </section>
 
@@ -184,7 +217,7 @@ const Index = () => {
               asChild
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl"
             >
-              <a href="/oficina">Ver Oficinas</a>
+              <a href="/oficinas">Ver Oficinas</a>
             </Button>
           </div>
         </section>
