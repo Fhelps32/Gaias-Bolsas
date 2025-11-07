@@ -28,11 +28,14 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-green-700" />
-                <span>contato@ecobags.com.br</span>
+                <span>contato@gaiasbolsas.com</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <MapPin className="h-4 w-4 text-green-700" />
-                <span>Avenida Amaral Peixoto, Volta Redonda 27253220</span>
+                <span>
+                  R. Trinta e Três - Vila Santa Cecília, Volta Redonda - RJ
+                  27260-010
+                </span>
               </div>
             </div>
           </div>
